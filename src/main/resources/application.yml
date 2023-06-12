@@ -1,0 +1,25 @@
+server:
+  port: 8761
+spring:
+  application:
+    name: eureka-server
+  config:
+    import: optional:configserver:${CONFIG_SERVER_URL:http://localhost:8888/}
+eureka:
+  instance:
+    hostname: eureka.sakka.local
+  client:
+    service-url:
+      defaultZone: https://eureka.sakka.local/eureka/
+      #defaultZone: http://localhost:8761/eureka/
+
+    enabled: true
+    fetch-registry: false
+    register-with-eureka: false
+  server:
+    waitTimeInMsWhenSyncEmpty: 0
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
